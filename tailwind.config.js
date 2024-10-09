@@ -7,12 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+      
       fontFamily: {
-        gambarino: ['var(--font-gambarino)'],
+        galactic: ['var(--font-galactic)'],
         
         // If you want to use CSS import method instead:
         // satoshi: ['Satoshi', 'sans-serif'],

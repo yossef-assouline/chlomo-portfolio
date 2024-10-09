@@ -3,62 +3,54 @@ import Link from "next/link";
 import Image from "next/image";
 export const Bento = () => {
   return (
-    <div className="bg-black h-screen p-4 grid gap-3 grid-cols-5 grid-rows-5 ">
-      <nav className="flex justify-between w-full border border-black bg-[#D8D2C2] rounded-xl col-start-1 col-end-6 row-start-1 row-end-2 items-center font-satoshi">
-        <h1 className="ml-6 font-gambarino text-[2rem]">LOGO</h1>
-        <div className="mr-6 gap-8 flex text-2xl">
-          <Link href="/"> About</Link>
-          <Link href="/">Weddings</Link>
-          <Link href="/">Contact</Link>
-        </div>
+    <div className="bg-[#181C14] h-screen p-4 grid gap-3 grid-cols-6 grid-rows-7 font-galactic ">
+      <nav className="flex justify-center w-full border border-black bg-[#ECDFCC] rounded-xl col-start-1 col-end-7 row-start-1 row-end-2 items-center font-satoshi">
+        <h1 className="ml-6 font-gambarino text-[3rem]">Chlomo Assouline.</h1>
+        
       </nav>
-      <div className="bg-[#D8D2C2]  pl-4 rounded-xl col-start-1 col-end-3 row-start-2 row-end-4 font-gambarino text-[3.5rem] flex justify-center flex-col">
-        Creating magic memories for your special day
+      <div className="bg-[#ECDFCC]   rounded-xl col-start-1 col-end-4 row-start-2 row-end-6  text-[5rem] flex justify-center flex-col items-end p-6">
+        <h1 className="font-galactic leading-none text-right  "> בנוסף אני מאוד אשמח לבלה בלה בלה ועוד אעזור לכם לייצר חוויות קסומות לאירועים שלכם בזכות המגנטיםי</h1>
       </div>
-      <div className="rounded-xl col-start-3 col-end-4 row-start-2">
-        <Image
-          src="https://placehold.co/400x375"
-          width={400}
-          height={350}
-          alt="profile"
-          className="rounded-xl"
-          // optional: you can add loading="lazy" or priority={true}
-        />
+      <div className="relative rounded-xl col-start-4 col-end-5 row-start-2 row-end-6">
+      <Image
+    src="/horizontal.jpg"
+    layout="fill"
+    objectFit="cover"
+    alt="profile"
+    className="rounded-xl"
+  />
       </div>
-      <div className="bg-[#D8D2C2] rounded-xl col-start-4 col-end-6 row-start-2 row-end-5 flex flex-col p-6 font-gambarino items-center">
+      <div className="bg-[#ECDFCC] rounded-xl col-start-5 col-end-7 row-start-2 row-end-7 flex flex-col p-6 font-galactic items-center">
         <div className="w-full">
-          <h1 className="mb-4 text-2xl">First Dance</h1>
+          <h1 className=" mb-4 text-3xl text-right">ריקוד ראשון</h1>
           <Image
-            src="https://placehold.co/600x300"
+            src="/vertical.jpg"
             width={600}
             height={300}
             alt="profile"
-            className="rounded-xl"
+            className="rounded-xl mb-6"
             // optional: you can add loading="lazy" or priority={true}
           />
-          <hr className="mt-4 border border-[#4A4947]" />
-          <div className="rounded-md mt-4 mb-4 text-2xl">Wedding 1</div>
           <hr className="border border-[#4A4947]" />
-          <div className="rounded-md mt-4 mb-4 text-2xl">Wedding 2</div>
+          <div className="rounded-md mt-4 mb-4 text-3xl text-right">חתונה 2</div>
+          <hr className="border border-[#4A4947]" />
+          <div className="rounded-md mt-4 mb-4 text-3xl text-right">חתונה 3</div>
         </div>
       </div>
-      <div className="bg-[#D8D2C2] rounded-xl col-start-1 col-end-3 row-start-4 row-end-6 font-gambarino flex items-end">
-        <p className="w-1/2 ml-4 text-xl mb-4">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam
-          voluptatem quo voluptate iste consequuntur autem quisquam, similique
-          quibusdam est vel non minus perferendis quae unde rerum repudiandae
-          quia dolore velit?
+      <div className="bg-[#ECDFCC] rounded-xl col-start-1 col-end-3 row-start-6 row-end-8 font-gambarino flex items-end p-4 ">
+        <p className="  text-[3rem] leading-tight font-galactic text-right  self-center">
+          ניסיון במגנטים כמה שנים אני מאוד נהנה מהפרוסדגדגדגדגדגדגדגדגדגס קצת הולך לספר על הניסיון שיש לי 
         </p>
       </div>
-      <div className="bg-[#B17457] rounded-xl col-start-3 col-end-4 row-start-4 row-end-6 flex flex-col ">
-        <p className="text-white ml-4 text-xl mt-4">
-          Have some <br /> questions ?
+      <div className="bg-[#697565] rounded-xl col-start-3 col-end-5 row-start-6 row-end-8 flex flex-col  justify-between p-4">
+        <p className="text-white  text-xl ">
+          יש לכם <br /> שאלות?
         </p>
-        <h1 className="text-[3rem] font-gambarino ml-4 mt-48 text-white">
-          Contact me
+        <h1 className="text-[5rem] font-galactic ml-4 text-white w-fit  self-end ">
+          צרו קשר
         </h1>
       </div>
-      <div className="flex gap-8 bg-[#D8D2C2] rounded-xl col-start-4 col-end-6 row-start-5 row-end-6 font-gambarino text-[2rem] items-center justify-center">
+      <div className="flex gap-8 bg-[#ECDFCC] rounded-xl col-start-5 col-end-7 row-start-7 row-end-8 font-galactic text-[2rem] items-center justify-center">
         <Link href="/">Twitter</Link>
         <Link href="/">Instagram</Link>
         <Link href="/">Pinterest</Link>
