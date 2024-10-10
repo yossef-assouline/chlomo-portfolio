@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import {Secular_One} from "@next/font/google"
+import {Secular_One} from "next/font/google"
 import "./globals.css";
 
 
