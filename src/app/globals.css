@@ -8,7 +8,37 @@
 
 
 
+ /* Custom styles for Swiper navigation */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #181C14 !important;
+  background: rgba(236, 223, 204, 0.8);
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+}
 
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px !important;
+}
+
+.swiper-pagination-bullet {
+  background: #181C14 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #884A39 !important;
+}
+
+/* Ensure proper spacing for navigation buttons */
+.swiper-button-next {
+  right: 10px !important;
+}
+
+.swiper-button-prev {
+  left: 10px !important;
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -24,7 +54,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  overflow: hidden;
+  
   
 }
 
