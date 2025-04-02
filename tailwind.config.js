@@ -10,7 +10,7 @@ module.exports = {
       
       fontFamily: {
         galactic: ['var(--font-galactic)'],
-        
+        secular: ['var(--font-secular)'],
         // If you want to use CSS import method instead:
         // satoshi: ['Satoshi', 'sans-serif'],
       },

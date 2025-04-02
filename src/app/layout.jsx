@@ -1,8 +1,14 @@
 import localFont from "next/font/local";
+import "./fonts.css";
 import {Secular_One} from "next/font/google"
 import "./globals.css";
+import CustomCursor from "./components/CustomCursor";
 
 
+const secular = Secular_One({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 const galactic = localFont({
   src: "./fonts/galacticondensed-regular-ffc-web.woff",
@@ -19,9 +25,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${galactic.variable} antialiased`}
+        className={`${galactic.variable} ${secular.variable} antialiased font-secular`}
       >
         {children}
+        <CustomCursor />
       </body>
     </html>
   );

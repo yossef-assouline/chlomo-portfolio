@@ -114,6 +114,18 @@ body {
     opacity: 1;
   }
 }
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
 .button-86 {
   all: unset;
   width: 100px;
@@ -179,4 +191,42 @@ body {
 .button-86:active::after {
   transition: 0s;
   transform: translate(0, 5%);
+}
+
+/* Hide default cursor */
+*, 
+*:hover {
+  cursor: none !important;
+}
+
+.cursor {
+  width: 24px;
+  height: 24px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: background-color 0.1s ease;
+}
+
+/* Disable on mobile/touch */
+@media (hover: none) and (pointer: coarse) {
+  *,
+  *:hover {
+    cursor: auto !important;
+  }
+  .cursor {
+    display: none;
+  }
+}
+
+/* Prevent overflow issues */
+#__next,
+main {
+  overflow-x: hidden;
 }

@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { GoArrowUpRight } from "react-icons/go";
 import { motion } from "framer-motion";
-
 import { RiInstagramFill } from "react-icons/ri";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { IoLogoWhatsapp } from "react-icons/io";
@@ -24,6 +23,49 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-cards";
 import "swiper/css/scrollbar";
+import { Secular_One, Karantina } from "next/font/google";
+
+const secular = Secular_One({
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
+const karantina = Karantina({
+  weight: ["300", "400", "700"],
+  subsets: ["latin"],
+});
+
+const Counter = ({ from, to, duration, delay }) => {
+  const [count, setCount] = useState(from);
+  
+  useEffect(() => {
+    const startTime = Date.now() + (delay * 1000); // Convert delay to milliseconds
+    const endTime = startTime + (duration * 1000); // Convert duration to milliseconds
+    
+    const updateCounter = () => {
+      const now = Date.now();
+      if (now < startTime) {
+        // Wait for delay
+        requestAnimationFrame(updateCounter);
+        return;
+      }
+      
+      if (now >= endTime) {
+        setCount(to);
+        return;
+      }
+      
+      const progress = (now - startTime) / (duration * 1000);
+      const currentCount = Math.floor(from + (to - from) * progress);
+      setCount(currentCount);
+      requestAnimationFrame(updateCounter);
+    };
+
+    requestAnimationFrame(updateCounter);
+  }, [from, to, duration, delay]);
+
+  return count;
+};
 
 export const Bento = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(true);
@@ -38,7 +80,8 @@ export const Bento = () => {
   }, []);
 
   return (
-    <div className="bg-[#181C14] min-h-screen lg:h-screen p-4 grid gap-3 
+    <div
+      className="bg-[#181C14] min-h-screen lg:h-screen p-4 grid gap-3 
       grid-cols-1 
       sm:grid-cols-2 
       lg:grid-cols-7 
@@ -46,8 +89,8 @@ export const Bento = () => {
       lg:grid-rows-7 
       font-galactic
       
-      overflow-y-hidden lg:overflow-hidden">
-      
+      overflow-y-hidden lg:overflow-hidden"
+    >
       {/* Navbar - adjusted height for better proportion */}
       <motion.nav
         initial={{
@@ -113,17 +156,15 @@ export const Bento = () => {
         initial={{ x: -900, scale: 0.1 }}
         animate={{ x: 0, scale: 1 }}
         transition={{ ease: "easeInOut", duration: 1, delay: 1.6 }}
-        className="rounded-xl 
+        className="rounded-xl relative overflow-hidden
           col-span-1
           sm:col-span-2
           lg:col-start-1 lg:col-end-4 
           min-h-[300px]
           lg:h-full
           lg:row-start-2 lg:row-end-6 
-          text-base md:text-[2vw] 
           flex justify-center flex-col p-6 
-          sm:col-start-1 sm:col-end-8
-          overflow-hidden items-center gap-4"
+          sm:col-start-1 sm:col-end-8"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' viewBox='0 0 700 700' width='700' height='700'%3E%3Cdefs%3E%3ClinearGradient gradientTransform='rotate(-144, 0.5, 0.5)' x1='50%25' y1='0%25' x2='50%25' y2='100%25' id='gggrain-gradient2'%3E%3Cstop stop-color='%23884A39' stop-opacity='1' offset='-0%25'%3E%3C/stop%3E%3Cstop stop-color='rgba(255,255,255,0)' stop-opacity='0' offset='100%25'%3E%3C/stop%3E%3C/linearGradient%3E%3ClinearGradient gradientTransform='rotate(144, 0.5, 0.5)' x1='50%25' y1='0%25' x2='50%25' y2='100%25' id='gggrain-gradient3'%3E%3Cstop stop-color='hsl(24, 64%25, 2%25)' stop-opacity='1'%3E%3C/stop%3E%3Cstop stop-color='rgba(255,255,255,0)' stop-opacity='0' offset='100%25'%3E%3C/stop%3E%3C/linearGradient%3E%3Cfilter id='gggrain-filter' x='-20%25' y='-20%25' width='140%25' height='140%25' filterUnits='objectBoundingBox' primitiveUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2' seed='101' stitchTiles='stitch' x='0%25' y='0%25' width='100%25' height='100%25' result='turbulence'%3E%3C/feTurbulence%3E%3CfeColorMatrix type='saturate' values='0' x='0%25' y='0%25' width='100%25' height='100%25' in='turbulence' result='colormatrix'%3E%3C/feColorMatrix%3E%3CfeComponentTransfer x='0%25' y='0%25' width='100%25' height='100%25' in='colormatrix' result='componentTransfer'%3E%3CfeFuncR type='linear' slope='3'%3E%3C/feFuncR%3E%3CfeFuncG type='linear' slope='3'%3E%3C/feFuncG%3E%3CfeFuncB type='linear' slope='3'%3E%3C/feFuncB%3E%3C/feComponentTransfer%3E%3CfeColorMatrix x='0%25' y='0%25' width='100%25' height='100%25' in='componentTransfer' result='colormatrix2' type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -13'%3E%3C/feColorMatrix%3E%3C/filter%3E%3C/defs%3E%3Cg%3E%3Crect width='100%25' height='100%25' fill='%23884a39'%3E%3C/rect%3E%3Crect width='100%25' height='100%25' fill='url(%23gggrain-gradient3)'%3E%3C/rect%3E%3Crect width='100%25' height='100%25' fill='url(%23gggrain-gradient2)'%3E%3C/rect%3E%3Crect width='100%25' height='100%25' fill='transparent' filter='url(%23gggrain-filter)' opacity='0.14' style='mix-blend-mode: soft-light'%3E%3C/rect%3E%3C/g%3E%3C/svg%3E")`,
           backgroundSize: "cover",
@@ -131,21 +172,84 @@ export const Bento = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <motion.h1
-          className="font-galactic leading-relaxed text-white text-center 
-            text-base sm:text-lg md:text-xl lg:text-5xl "
-        >
-          שלום, אני שלמה, צלם מקצועי שמעניק לכל לקוח יחס אישי, קשוב וממוקד,
-          ומספק שירות ברמה הגבוהה ביותר.
-          <span className="block mt-3  sm:text-2xl opacity-90">
-            מעל 1000 זוגות בחרו בי להנציח את הרגעים המיוחדים שלהם
-          </span>
-        </motion.h1>
-        <Link href={"/photo"}>
-          <button className="button-86" role="button">
-            לגלריית התמונות
-          </button>
-        </Link>
+        {/* Background Effects */}
+        <motion.div
+          className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/30 via-transparent to-black/30"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+        />
+
+        <motion.div className="relative z-10 flex flex-col  gap-6  ">
+          {/* Main Heading Section */}
+          <motion.div
+            className="text-center w-full"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2 }}
+          >
+            <h1
+              className={`${karantina.className} lg:text-right text-5xl sm:text-5xl lg:text-8xl mb-2 text-white font-bold `}
+            >
+              ,אני שלמה
+              <span className="block text-[#ECDFCC] mt-1 lg:text-6xl ">
+                .צלם האירועים שלכם
+              </span>
+            </h1>
+            <motion.p
+              className={`${karantina.className}   font-bold  text-2xl sm:text-3xl lg:text-4xl text-white mt-4 lg:text-right `}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2.3 }}
+            >
+              !מתעד רגעים, יוצר זיכרונות
+            </motion.p>
+          </motion.div>
+
+          {/* Tagline with Animated Border */}
+          <motion.div
+            className=" group w-full max-w-sm lg:self-end self-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.6 }}
+          >
+            <div className="absolute  inset-0 bg-gradient-to-r from-[#ECDFCC]/20 to-white/20 rounded-lg blur-md group-hover:blur-lg transition-all duration-500" />
+            <p className="text-base sm:text-lg lg:text-xl text-center text-white p-4 rounded-lg backdrop-blur-sm border border-white/10">
+              מקצועיות, יצירתיות ואיכות ללא פשרות
+            </p>
+          </motion.div>
+
+          {/* Success Counter */}
+          <motion.div
+            className="text-center lg:text-right "
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 2.9 }}
+          >
+            <div className="text-[#ECDFCC] text-xl sm:text-2xl lg:text-3xl font-bold mb-1">
+              <Counter from={0} to={1000} duration={2} delay={2.9} />
+            </div>
+            <p className="text-white text-lg sm:text-xl">לקוחות מרוצים</p>
+            <p className="text-[#ECDFCC] text-base sm:text-lg mt-1 font-light">
+              עכשיו תורך!
+            </p>
+          </motion.div>
+
+          {/* Single Call to Action Button */}
+          <motion.div
+            className=" flex justify-center lg:justify-end mx-auto w-full mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.2 }}
+          >
+            <Link
+              href="/photo"
+              className=""
+            >
+              <button className="w-full button-86"> 📸 לגלריה </button>
+            </Link>
+          </motion.div>
+        </motion.div>
       </motion.div>
 
       {/* Profile Image - adjusted height */}
@@ -188,14 +292,16 @@ export const Bento = () => {
           p-4 lg:p-12 
           sm:col-start-1 sm:col-end-8
           md:col-start-1 md:col-end-8
-          md:min-h-[700px]
+          
           font-galactic overflow-hidden"
       >
-        <h1 className="text-xl sm:text-2xl lg:text-[2.5vw] mb-3 text-center text-black">
-          תיק העבודות שלי
+        <h1
+          className={`${karantina.className} font-bold text-4xl sm:text-xl lg:text-[2.5vw] mb-3 text-center text-black`}
+        >
+          הצצה לגלריה
         </h1>
         <hr className="w-2/4 h-[2px] border-0 bg-gradient-to-r from-transparent via-[#697565] to-transparent mb-2 -mt-2 mx-auto" />
-        
+
         {/* Mobile/Tablet Slider */}
         <div className="lg:hidden h-[100%] w-full">
           <Swiper
@@ -259,9 +365,9 @@ export const Bento = () => {
         </div>
 
         {/* Desktop Cards Effect */}
-        <div className="hidden lg:block h-[80%]">
+        <div className="hidden lg:block h-[80%] ">
           <Swiper
-            className="h-full -mb-12"
+            className="h-full -mb-12 bg-transparent"
             effect={"cards"}
             grabCursor={true}
             modules={[Navigation, Pagination, Scrollbar, A11y, EffectCards]}
@@ -274,14 +380,14 @@ export const Bento = () => {
                 initial={{ opacity: 1, x: 500 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ ease: "easeOut", duration: 0.5, delay: 2.3 }}
-                className="relative z-40 h-full rounded-xl"
+                className="relative z-40 h-full rounded-xl "
               >
                 <Image
                   src="/slider-2.jpeg"
                   layout="fill"
                   objectFit="cover"
                   alt="portfolio image"
-                  className="rounded-xl hover:scale-105 transition-all"
+                  className="rounded-xl  transition-all hover:rounded-xl"
                 />
               </motion.div>
             </SwiperSlide>
@@ -297,7 +403,7 @@ export const Bento = () => {
                   layout="fill"
                   objectFit="cover"
                   alt="portfolio image"
-                  className="rounded-xl hover:scale-105 transition-all"
+                  className="rounded-xl transition-all"
                 />
               </motion.div>
             </SwiperSlide>
@@ -313,7 +419,7 @@ export const Bento = () => {
                   layout="fill"
                   objectFit="cover"
                   alt="portfolio image"
-                  className="rounded-xl hover:scale-105 transition-all"
+                  className="rounded-xl  transition-all"
                 />
               </motion.div>
             </SwiperSlide>
@@ -329,7 +435,7 @@ export const Bento = () => {
                   layout="fill"
                   objectFit="cover"
                   alt="portfolio image"
-                  className="rounded-xl hover:scale-105 transition-all"
+                  className="rounded-xl  transition-all"
                 />
               </motion.div>
             </SwiperSlide>
@@ -351,20 +457,24 @@ export const Bento = () => {
           sm:col-start-1 sm:col-end-8
           font-gambarino flex flex-col items-center p-4 justify-center text-black"
       >
-        <p className="text-sm sm:text-base lg:text-2xl font-galactic text-center">
-          הצעה מיוחדת לאירוע שלכם
-          <span className="block mt-2 text-xs sm:text-md opacity-80">
-            חתונות | בר/בת מצווה | אירועי חברה
-          </span>
-        </p>
-        <motion.a
-          href="https://wa.me/972525076029"
-          target="_blank"
-          className="button-86 text-sm flex items-center gap-2 hover:scale-105 transform transition-all"
-        >
-          <IoLogoWhatsapp className="text-xl" />
-          לשיחת ייעוץ
-        </motion.a>
+        <div className="flex flex-col items-center">
+          <motion.span 
+            className="text-6xl sm:text-7xl lg:text-8xl font-bold"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 2.8 }}
+          >
+            <Counter from={0} to={5} duration={1.5} delay={2.8} />
+            +
+          </motion.span>
+          <p className="text-sm sm:text-base xl:text-4xl text-center">
+            שנות ניסיון
+            <span className="block mt-1 text-xs xl:text-xl sm:text-sm opacity-80">
+              בצילום אירועים מקצועי
+            </span>
+          </p>
+        </div>
+        
       </motion.div>
 
       {/* Magnets section - adjusted height */}
@@ -388,27 +498,38 @@ export const Bento = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="flex  flex-col items-center gap-4 
-        ">
-          <motion.div className="text-center">
-            <h2 className="text-white text-xl sm:text-2xl lg:text-5xl mb-2">
-              מגנטים שהופכים רגעים לזכרונות
+        <div
+          className="flex  flex-col items-center lg:items-end gap-4 
+        "
+        >
+          <motion.div className="text-center lg:text-right">
+            <h2
+              className={`${karantina.className} font-bold text-white  text-4xl sm:text-4xl xl:text-7xl mb-2`}
+            >
+              <span className="text-black/90">!</span>יש לכם אירוע בקרוב?{" "}
+              <span className="text-black/90">תזמינו אותי</span>
             </h2>
             <p className="text-white text-sm sm:text-2xl opacity-90">
-              צוות מקצועי | הדפסה איכותית | משלוח מהיר
+              מתכננים חתונה? ברית? יום הולדת? בואו ליהנות מחבילות צילום משתלמות
+              בהתאמה אישית. מבצע מיוחד לזמן מוגבל. <span className="text-black">צרו קשר עכשיו</span>
             </p>
           </motion.div>
-          <Link href={"/magnet"}>
-            <button className="button-86" role="button">
-              למחירים ודוגמאות
-            </button>
+          <Link href="https://wa.me/972536670760?text=שלום,%20אשמח%20לקבל%20פרטים%20נוספים%20על%20שירותי%20המגנטים%20שאתה%20מציע." target="_blank">
+          <motion.a
+          href="https://wa.me/972536670760?text=שלום,%20אשמח%20לקבל%20פרטים%20נוספים%20על%20שירותי%20המגנטים%20שאתה%20מציע."
+          target="_blank"
+          className="button-86 text-sm flex items-center gap-2 hover:scale-105 transform transition-all"
+        >
+          <IoLogoWhatsapp className="text-xl" />
+          לשיחת ייעוץ
+        </motion.a>
           </Link>
         </div>
         <motion.a
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ease: "easeInOut", duration: 0.5, delay: 3.1 }}
-          href="https://wa.me/972525076029?text=שלום,%20אשמח%20לקבל%20פרטים%20נוספים%20על%20שירותי%20המגנטים%20שאתה%20מציע."
+          href="https://wa.me/972536670760?text=שלום,%20אשמח%20לקבל%20פרטים%20נוספים%20על%20שירותי%20המגנטים%20שאתה%20מציע."
           target="_blank"
           className="text-[1.5rem] text-right font-galactic ml-4 text-white w-fit self-end  transition-all "
         ></motion.a>
@@ -430,7 +551,7 @@ export const Bento = () => {
           font-galactic text-2xl lg:text-[2rem] items-center text-black"
       >
         <Link
-          href="https://wa.me/972525076029?text=שלום,%20אשמח%20לקבל%20פרטים%20נוספים%20על%20שירותי%20המגנטים%20שאתה%20מציע."
+          href="https://wa.me/972536670760?text=שלום,%20אשמח%20לקבל%20פרטים%20נוספים%20על%20שירותי%20המגנטים%20שאתה%20מציע."
           target="_blank"
           className="hover:scale-125 transition-all"
         >
